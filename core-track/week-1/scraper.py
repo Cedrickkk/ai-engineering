@@ -15,7 +15,6 @@ def fetch_website_contents(url: str):
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "html.parser")
     title = soup.title.string if soup.title and soup.title.string else "No title found"
-    print(soup.body)
     if soup.body:
         for irrelevant in soup.body(["script", "img", "input", "style"]):
             irrelevant.decompose()
