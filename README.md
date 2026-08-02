@@ -1,4 +1,4 @@
-# AI Engineering Notes
+# AI Engineering
 
 This repository contains my study notes, exercises, and notebook work for Ed Donner's AI Engineering course.
 
