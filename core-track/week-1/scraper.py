@@ -24,9 +24,8 @@ def fetch_website_contents(url: str):
         text = ""
     return (title + "\n\n" + text)[:2_000]
 
-def fetch_website_links(url: str) -> list[_AttributeValue]:
-    """Returns the links of a website at the given url"""
+def fetch_website_links(url: str) -> list[str]:
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "html.parser")
-    links = [link.get("href") for link in soup.find_all('a')]
-    return [link for link in links if link]
+    links = [link.get("href") for link in soup.find_all("a")]
+    return [link for link in links if isinstance(link, str)]
