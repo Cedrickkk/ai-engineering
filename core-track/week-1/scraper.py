@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup
 import requests
-from bs4._typing import _AttributeValue
 
 
 # Standard headers to fetch a website
