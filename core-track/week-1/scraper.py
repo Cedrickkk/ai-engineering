@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+from bs4._typing import _AttributeValue
 
 
 # Standard headers to fetch a website
@@ -23,4 +24,9 @@ def fetch_website_contents(url: str):
         text = ""
     return (title + "\n\n" + text)[:2_000]
 
-fetch_website_contents("http://cedrickkk.vercel.app")
+def fetch_website_links(url: str) -> list[_AttributeValue]:
+    """Returns the links of a website at the given url"""
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, "html.parser")
+    links = [link.get("href") for link in soup.find_all('a')]
+    return [link for link in links if link]
